@@ -15,7 +15,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": " react-scripts test",
+    "test": " react-scripts test --group=-component --group=-integration --group=-browser",
+    "componenttest": "jest  --group=component",
+    "integrationtest": "jest  --group=integration",
+    "browsertest": "jest  --group=browser",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
