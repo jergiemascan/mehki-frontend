@@ -1,3 +1,7 @@
+/**
+ * @group unit
+ */
+
 import * as React from "react";
 import { render, screen } from "@testing-library/react";
 import LoginForm from "../components/LoginForm";

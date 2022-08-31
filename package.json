@@ -15,11 +15,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": " react-scripts test --group=-component --group=-integration --group=-browser",
+    "test": " jest --group=-component --group=-integration --group=-browser --group=-unit",
     "componenttest": "jest  --group=component",
     "integrationtest": "jest  --group=integration",
     "browsertest": "jest  --group=browser",
+    "unittest": "jest  --group=unit",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "runner": "groups"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +43,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "jest-runner-groups": "^2.2.0"
+  }
 }
