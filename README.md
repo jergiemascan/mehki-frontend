@@ -6,7 +6,7 @@
     * Node.js
     * Visual Studio Code
 
-## Cloning into to your workspace
+### Cloning into to your workspace
 
 ```
 
