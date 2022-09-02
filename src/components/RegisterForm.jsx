@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function RegisterForm() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,11 @@ function RegisterForm() {
 
   return (
     <>
+      <div className="nav">
+        <Link to="/">Home</Link>
+        <Link to="/register">Sign in</Link>
+      </div>
+
       <form className="registerform" onSubmit={handleSubmit}>
         <input
           type="email"

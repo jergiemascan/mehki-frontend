@@ -1,0 +1,16 @@
+.landingpage {
+  background-image: url(../pictures/bg);
+  /* background-image: url(../pictures/landingpage.png); */
+  background-position: center;
+
+  margin-top: 5vh;
+  background-repeat: no-repeat;
+  height: 80vh;
+  max-width: 100%;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  margin-top: 30vh;
+  color: crimson;
+}
