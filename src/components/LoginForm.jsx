@@ -33,7 +33,7 @@ function LoginForm(props) {
         <button>Login</button>
       </form>
       {/* Future React Router?`Dun dun duuu */}
-      <a href="#">Register</a>
+      {/* <a href="#">Register</a> */}
     </>
   );
 }
