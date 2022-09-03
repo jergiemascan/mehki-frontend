@@ -56,4 +56,9 @@ Chat application run with React and MongoDB
     
     
 ```
+# Script for building Mehki's container image in Docker
+
+   docker build -t imagename .
+   docker run -dp 3001:3001 imagename
+   
 
