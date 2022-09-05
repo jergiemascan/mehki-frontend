@@ -16,6 +16,7 @@ function RegisterForm() {
 
   return (
     <>
+      <h2>Register here!</h2>
       <div className="nav">
         <Link to="/">Home</Link>
         <Link to="/register">Sign in</Link>
