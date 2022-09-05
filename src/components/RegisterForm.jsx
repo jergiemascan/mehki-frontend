@@ -6,6 +6,7 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   // const [errorTitle, setError] = useState(""); used for validation when routes are set up
 
   const handleSubmit = (e) => {
@@ -22,6 +23,18 @@ function RegisterForm() {
 
       <form className="registerform" onSubmit={handleSubmit}>
         <input
+          type="text"
+          placeholder="Firstname"
+          onChange={(e) => setFirstname(e.target.value)}
+          value={firstName}
+        />
+        <input
+          type="text"
+          placeholder="Lastname"
+          onChange={(e) => setLastname(e.target.value)}
+          value={lastName}
+        />
+        <input
           type="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
@@ -34,16 +47,10 @@ function RegisterForm() {
           value={password}
         />
         <input
-          type="text"
-          placeholder="Firstname"
-          onChange={(e) => setFirstname(e.target.value)}
-          value={firstName}
-        />
-        <input
-          type="text"
-          placeholder="Lastname"
-          onChange={(e) => setLastname(e.target.value)}
-          value={lastName}
+          type="password"
+          placeholder="Confirm password"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={confirmPassword}
         />
         <button>Register</button>
       </form>
