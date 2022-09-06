@@ -44,7 +44,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001",
   "devDependencies": {
     "jest": "^27.5.1",
     "jest-runner-groups": "^2.2.0"
