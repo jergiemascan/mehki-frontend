@@ -1,17 +1,41 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function RegisterForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   // const [errorTitle, setError] = useState(""); used for validation when routes are set up
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userInfo = {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+    };
+
+    const createUser = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3001/v0/register",
+          userInfo
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    // console.log(userInfo);
     // here goes axios post statement when routes are set up
+
+    createUser();
   };
 
   return (
