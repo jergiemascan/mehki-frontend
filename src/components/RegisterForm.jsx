@@ -31,20 +31,16 @@ function RegisterForm() {
         console.log(error);
       }
     };
-
-    // console.log(userInfo);
-    // here goes axios post statement when routes are set up
-
     createUser();
   };
 
   return (
     <>
       <h2>Register here!</h2>
-      <div className="nav">
+      <nav className="nav">
         <Link to="/">Home</Link>
         <Link to="/register">Sign in</Link>
-      </div>
+      </nav>
 
       <form className="registerform" onSubmit={handleSubmit}>
         <input

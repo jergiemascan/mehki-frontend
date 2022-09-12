@@ -8,7 +8,7 @@ function LoginForm(props) {
 
   const loginRequestHandler = (e) => {
     e.preventDefault();
-    //props.sendToApp(userInfo);
+
     const userInfo = {
       email,
       password,
@@ -21,10 +21,10 @@ function LoginForm(props) {
           userInfo
         );
         console.log(response.data);
-        if (response.data.status === "success"){
-          window.location.href = "http://google.se"
+        if (response.data.status === "success") {
+          window.location.href = "http://google.se";
         } else {
-          console.log("hihi")
+          console.log("hihi");
         }
       } catch (error) {
         console.log(error);
@@ -33,24 +33,13 @@ function LoginForm(props) {
     loginUser();
   };
 
-  // const userInfoHandler = (userInfo) => {
-  //   // Available in App.js
-  //   console.log(userInfo);
-  // };
-
-  // Simpelt exempel på ett objekt som vi skulle kunna skicka till backend
-  // const userInfo = {
-  //   userEmail: email,
-  //   userPassword: password,
-  // };
-
   return (
     <>
-      <div className="nav">
+      <nav className="nav">
         <Link to="/">Home</Link>
         <Link to="/register">Register</Link>
-      </div>
-      <form className="loginForm" onSubmit={loginRequestHandler}>
+      </nav>
+      <form className="login-form" onSubmit={loginRequestHandler}>
         <input
           type="text"
           placeholder="Email"
@@ -65,8 +54,6 @@ function LoginForm(props) {
         />
         <button>Login</button>
       </form>
-      {/* Future React Router?`Dun dun duuu */}
-      {/* <a href="#">Register</a> */}
     </>
   );
 }
