@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 
 function LoginForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  let navigate = useNavigate();
 
   const loginRequestHandler = (e) => {
     e.preventDefault();
@@ -13,8 +16,9 @@ function LoginForm(props) {
       email,
       password,
     };
-
+    
     const loginUser = async () => {
+      
       try {
         const response = await axios.post(
           "http://localhost:3001/v0/signin",
@@ -22,7 +26,10 @@ function LoginForm(props) {
         );
         console.log(response.data);
         if (response.data.status === "success"){
-          window.location.href = "http://google.se"
+          // window.location.href = "http://google.se"
+          navigate("/forum", {replace : true})
+          
+          // <Navigate to="/forum" replace={true} />
         } else {
           console.log("hihi")
         }
