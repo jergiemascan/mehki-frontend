@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function LoginForm(props) {
   const [email, setEmail] = useState("");
@@ -7,7 +8,29 @@ function LoginForm(props) {
 
   const loginRequestHandler = (e) => {
     e.preventDefault();
-    props.sendToApp(userInfo);
+    //props.sendToApp(userInfo);
+    const userInfo = {
+      email,
+      password,
+    };
+
+    const loginUser = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3001/v0/signin",
+          userInfo
+        );
+        console.log(response.data);
+        if (response.data.status === "success"){
+          window.location.href = "http://google.se"
+        } else {
+          console.log("hihi")
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loginUser();
   };
 
   // const userInfoHandler = (userInfo) => {
@@ -16,10 +39,10 @@ function LoginForm(props) {
   // };
 
   // Simpelt exempel på ett objekt som vi skulle kunna skicka till backend
-  const userInfo = {
-    userEmail: email,
-    userPassword: password,
-  };
+  // const userInfo = {
+  //   userEmail: email,
+  //   userPassword: password,
+  // };
 
   return (
     <>
