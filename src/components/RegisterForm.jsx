@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function RegisterForm() {
@@ -9,6 +9,8 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   // const [errorTitle, setError] = useState(""); used for validation when routes are set up
+
+  let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +29,12 @@ function RegisterForm() {
           userInfo
         );
         console.log(response.data);
+        if (response.data.status === "success") {
+          localStorage.setItem("isAuthenticated", response.data.data.user);
+          setTimeout(() => {
+            navigate("/forum");
+          }, 2000);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -42,8 +50,12 @@ function RegisterForm() {
     <>
       <h2>Register here!</h2>
       <div className="nav">
-        <Link to="/">Home</Link>
-        <Link to="/register">Sign in</Link>
+        <Link className="link" to="/">
+          Home
+        </Link>
+        <Link className="link" to="/register">
+          Sign in
+        </Link>
       </div>
 
       <form className="registerform" onSubmit={handleSubmit}>
@@ -77,7 +89,9 @@ function RegisterForm() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword}
         />
-        <button>Register</button>
+        <button className="button" type="submit">
+          Register
+        </button>
       </form>
     </>
   );

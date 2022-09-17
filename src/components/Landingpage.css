@@ -3,7 +3,7 @@
   /* background-image: url(../pictures/landingpage.png); */
   background-position: center;
 
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   background-repeat: no-repeat;
   height: 80vh;
   max-width: 100%;
@@ -11,6 +11,7 @@
 .content {
   display: flex;
   justify-content: center;
-  margin-top: 30vh;
+  margin-top: 10vh;
   color: crimson;
+  padding-top: 10vh;
 }

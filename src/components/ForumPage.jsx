@@ -1,5 +1,6 @@
-import "./ForumPage.css"
-import Chat from "./Chat"
+import "./ForumPage.css";
+import Chat from "./Chat";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import io from "socket.io-client";
 
@@ -17,8 +18,22 @@ function ForumPage() {
     }
   };
 
+  const navigate = useNavigate();
+
+  const signoutHandler = () => {
+    localStorage.removeItem("isAuthenticated");
+    navigate("/");
+  };
+
   return (
     <div className="App">
+      <div className="nav">
+        <Link to="/">Home</Link>
+        <div>
+          <button onClick={signoutHandler}>Sign out</button>
+        </div>
+      </div>
+
       {!showChat ? (
         <div className="joinChatContainer">
           <h3>Join A Chat</h3>
