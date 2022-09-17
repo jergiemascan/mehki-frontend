@@ -27,12 +27,7 @@
     "eject": "react-scripts eject"
   },
   "pre-commit": [
-    "lint",
-    "test",
-    "componenttest",
-    "integrationtest",
-    "browsertest",
-    "unittest"
+    "lint"
   ],
   "jest": {
     "runner": "groups"
