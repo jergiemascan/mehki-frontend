@@ -1,26 +1,30 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 
 function LoginForm(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   let navigate = useNavigate();
 
   const loginRequestHandler = async (e) => {
     e.preventDefault();
 
-    const userInfo = {
-      email,
-      password,
-    };
+    // const userInfo = {
+    //   email,
+    //   password,
+    // };
 
     const loginUser = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3001/v0/signin",
-          userInfo
+          "http://localhost:3001/v0/signin"
+          // userInfo
         );
         console.log(response.data);
         if (response.data.status === "success") {
@@ -40,30 +44,27 @@ function LoginForm(props) {
 
   return (
     <>
-      <form className="loginForm" onSubmit={loginRequestHandler}>
-        <div className="nav">
-          <Link className="link" to="/">
-            Home
-          </Link>
-          <Link className="link" to="/register">
-            Register
-          </Link>
-        </div>
+      <nav className="nav">
+        <Link to="/">Home</Link>
+        <Link to="/register">Register</Link>
+      </nav>
+      <form className="login-form" onSubmit={handleSubmit(loginRequestHandler)}>
         <input
+          {...register("email", { required: true })}
           type="text"
           placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
         />
+
+        {errors.email && <p>Enter valid email</p>}
+
         <input
+          {...register("password", { required: true })}
           type="password"
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
         />
-        <button className="button" type="submit">
-          Login
-        </button>
+        {errors.password && <p>Enter valid password</p>}
+
+        <button>Login</button>
       </form>
     </>
   );

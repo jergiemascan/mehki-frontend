@@ -1,32 +1,31 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 
 function RegisterForm() {
-  const [firstName, setFirstname] = useState("");
-  const [lastName, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   // const [errorTitle, setError] = useState(""); used for validation when routes are set up
 
-  let navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    const userInfo = {
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword,
-    };
+    // const userInfo = {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   password,
+    //   confirmPassword,
+    // };
 
     const createUser = async () => {
       try {
         const response = await axios.post(
           "http://localhost:3001/v0/register",
-          userInfo
+          // userInfo
         );
         console.log(response.data);
         if (response.data.status === "success") {
@@ -54,40 +53,55 @@ function RegisterForm() {
         </Link>
       </div>
 
-      <form className="registerform" onSubmit={handleSubmit}>
-        <input
+      <form className="registerform" onSubmit={handleSubmit(onSubmit)}>
+        {/* <input
           type="text"
           placeholder="Firstname"
           onChange={(e) => setFirstname(e.target.value)}
           value={firstName}
-        />
+        /> */}
+
         <input
+          {...register("firstName", { required: true })}
+          placeholder="First name"
+          autoComplete="off"
           type="text"
-          placeholder="Lastname"
-          onChange={(e) => setLastname(e.target.value)}
-          value={lastName}
         />
+        {errors.firstName && <p>You need a first name</p>}
+
         <input
-          type="email"
+          {...register("lastName", { required: true })}
+          placeholder="Last name"
+          autoComplete="off"
+          type="text"
+        />
+        {errors.lastName && <p>You need a last name</p>}
+
+        <input
+          {...register("email", { required: true })}
           placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          autoComplete="off"
+          type="text"
         />
+        {errors.email && <p>You need an email</p>}
+
         <input
-          type="password"
+          {...register("password", { required: true })}
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <input
+          autoComplete="off"
           type="password"
-          placeholder="Confirm password"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          value={confirmPassword}
         />
-        <button className="button" type="submit">
-          Register
-        </button>
+        {errors.password && <p>You need a password</p>}
+
+        <input
+          {...register("confirmPassword", { required: true })}
+          placeholder="Confirm Password"
+          autoComplete="off"
+          type="password"
+        />
+        {errors.confirmPassword && <p>You need to re-enter your password</p>}
+
+        <button>Register</button>
       </form>
     </>
   );
