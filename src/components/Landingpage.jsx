@@ -5,8 +5,10 @@ import Navbar from "./Navbar";
 const Landingpage = () => {
   return (
     <div className="landingpage">
+      <div className="content">
+        <h1>Welcome to Mehki Chatroom</h1>
+      </div>
       <Navbar />
-      <h1 className="content">Chat content here!</h1>
     </div>
   );
 };

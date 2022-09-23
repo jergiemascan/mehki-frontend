@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function LoginForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginRequestHandler = (e) => {
+  let navigate = useNavigate();
+
+  const loginRequestHandler = async (e) => {
     e.preventDefault();
 
     const userInfo = {
@@ -22,7 +24,10 @@ function LoginForm(props) {
         );
         console.log(response.data);
         if (response.data.status === "success") {
-          window.location.href = "http://google.se";
+          // window.location.href = "http://google.se"
+          localStorage.setItem("isAuthenticated", response.data.userId);
+          navigate("/forum");
+          // navigate("/forum", { replace: true });
         } else {
           console.log("hihi");
         }
@@ -35,11 +40,15 @@ function LoginForm(props) {
 
   return (
     <>
-      <nav className="nav">
-        <Link to="/">Home</Link>
-        <Link to="/register">Register</Link>
-      </nav>
-      <form className="login-form" onSubmit={loginRequestHandler}>
+      <form className="loginForm" onSubmit={loginRequestHandler}>
+        <div className="nav">
+          <Link className="link" to="/">
+            Home
+          </Link>
+          <Link className="link" to="/register">
+            Register
+          </Link>
+        </div>
         <input
           type="text"
           placeholder="Email"
@@ -52,7 +61,9 @@ function LoginForm(props) {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <button>Login</button>
+        <button className="button" type="submit">
+          Login
+        </button>
       </form>
     </>
   );

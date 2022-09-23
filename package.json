@@ -11,9 +11,12 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-scroll-to-bottom": "^4.2.0",
+    "socket.io-client": "^4.5.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "lint": "prettier --write \"**/*.{js,jsx,json,md}\" ",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": " jest --group=-component --group=-integration --group=-browser --group=-unit",
@@ -23,6 +26,9 @@
     "unittest": "jest  --group=unit",
     "eject": "react-scripts eject"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "jest": {
     "runner": "groups"
   },
@@ -46,6 +52,8 @@
   },
   "devDependencies": {
     "jest": "^27.5.1",
-    "jest-runner-groups": "^2.2.0"
+    "jest-runner-groups": "^2.2.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.7.1"
   }
 }

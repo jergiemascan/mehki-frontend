@@ -11,7 +11,7 @@
 ```
 
     git clone https://github.com/jergiemascan/paketering-frontend.git in your workspace
-    
+
 ```
 
 ### Working with the project in VSCode
@@ -23,9 +23,8 @@
 
     This starts the React project in your default browser
     npm start
-    
-```
 
+```
 
 # We are Mehki
 
@@ -42,30 +41,24 @@ Chat application run with React and MongoDB
     * Jest
     * Jest runner groups
 
-
-
 ### System Overhead
 
-```mermaid 
+```mermaid
    flowchart LR;
-   
+
    Dev_Env-->Docker-->Heroku
-   
+
 
    MongoDB<-- Mehki -->React
-    
-    
-```
 
+
+```
 
 # Script for building Mehki's container image in Docker
 
-
 ```
     docker build -t imagename .
-   
-    docker run -dp 3001:3001 imagename
-    
-```
-   
 
+    docker run -dp 3001:3001 imagename
+
+```
