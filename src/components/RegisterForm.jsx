@@ -48,7 +48,7 @@ function RegisterForm() {
         <Link className="link" to="/">
           Home
         </Link>
-        <Link className="link" to="/register">
+        <Link className="link" to="/signin">
           Sign in
         </Link>
       </div>
