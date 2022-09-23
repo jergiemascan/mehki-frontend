@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
@@ -10,6 +9,7 @@ function RegisterForm() {
     formState: { errors },
   } = useForm();
   // const [errorTitle, setError] = useState(""); used for validation when routes are set up
+  const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ function RegisterForm() {
     const createUser = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3001/v0/register",
+          "http://localhost:3001/v0/register"
           // userInfo
         );
         console.log(response.data);

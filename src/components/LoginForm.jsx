@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ function LoginForm(props) {
     formState: { errors },
   } = useForm();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const loginRequestHandler = async (e) => {
     e.preventDefault();
