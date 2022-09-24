@@ -3,6 +3,7 @@ import Chat from "./Chat";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import io from "socket.io-client";
+import Footer from "./Footer";
 
 const socket = io.connect("http://localhost:3002");
 
@@ -26,37 +27,44 @@ function ForumPage() {
   };
 
   return (
-    <div className="App">
+    <>
       <div className="nav">
-        <Link to="/">Home</Link>
+        <Link className="link" to="/">
+          Home
+        </Link>
         <div>
           <button onClick={signoutHandler}>Sign out</button>
         </div>
       </div>
 
-      {!showChat ? (
-        <div className="joinChatContainer">
-          <h3>Join A Chat</h3>
-          <input
-            type="text"
-            placeholder="John..."
-            onChange={(event) => {
-              setUserName(event.target.value);
-            }}
-          ></input>
-          <input
-            type="text"
-            placeholder="Room ID..."
-            onChange={(event) => {
-              setRoom(event.target.value);
-            }}
-          ></input>
-          <button onClick={joinRoom}>Join A Room</button>
+      <div className="chat-container">
+        <div className="App">
+          {!showChat ? (
+            <div className="joinChatContainer">
+              <h3>Join A Chat</h3>
+              <input
+                type="text"
+                placeholder="John..."
+                onChange={(event) => {
+                  setUserName(event.target.value);
+                }}
+              ></input>
+              <input
+                type="text"
+                placeholder="Room ID..."
+                onChange={(event) => {
+                  setRoom(event.target.value);
+                }}
+              ></input>
+              <button onClick={joinRoom}>Join A Room</button>
+            </div>
+          ) : (
+            <Chat socket={socket} username={username} room={room}></Chat>
+          )}
         </div>
-      ) : (
-        <Chat socket={socket} username={username} room={room}></Chat>
-      )}
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
 

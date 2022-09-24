@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -39,10 +40,14 @@ function Chat({ socket, username, room }) {
   return (
     <>
       <div className="nav">
-        <Link to="/">Home</Link>
-        <div>
-          <button onClick={signoutHandler}>Sign out</button>
-        </div>
+        <Link className="link" to="/">
+          Home
+        </Link>
+        {/* <div className="link"> */}
+        <button className="link" onClick={signoutHandler}>
+          Sign out
+        </button>
+        {/* </div> */}
       </div>
 
       <div className="chat-window">
@@ -85,6 +90,7 @@ function Chat({ socket, username, room }) {
         ></input>
         <button onClick={sendMessage}>&#9658;</button>
       </div>
+      <Footer />
     </>
   );
 }

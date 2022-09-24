@@ -1,5 +1,5 @@
 .landingpage {
-  background-image: url(../pictures/bg);
+  /* background-image: url(../pictures/bg); */
   /* background-image: url(../pictures/landingpage.png); */
   background-position: center;
 
@@ -8,10 +8,25 @@
   height: 80vh;
   max-width: 100%;
 }
-.content {
+.main {
   display: flex;
+  gap: 5rem;
+  align-items: center;
   justify-content: center;
-  margin-top: 10vh;
-  color: crimson;
-  padding-top: 10vh;
+  margin-top: 5vh;
+}
+
+.bg {
+  margin-top: 5%;
+  justify-content: flex-end;
+  max-width: 30%;
+  height: 100%;
+  border-radius: 10px;
+}
+.content {
+  color: #ffe600;
+  text-transform: uppercase;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 55px;
 }

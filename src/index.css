@@ -11,7 +11,8 @@
 body {
   font-family: "Roboto Condensed", sans-serif;
 
-  background-color: rgba(237, 243, 252, 0.65);
+  background-color: #785bee;
+  /* background-color: rgba(237, 243, 252, 0.65); */
   /* background-color: rgba(255, 255, 255, 0.85); */
 }
 html {
@@ -46,16 +47,18 @@ a {
 
 .link {
   text-decoration: none;
-  color: #fff;
+  color: #000;
   font-family: inherit;
   margin-top: 1rem;
   padding: 10px 20px;
   text-transform: uppercase;
-  border: solid 1px #ddd;
-  background-color: #38bec9;
+  border-radius: 15px 5px;
+  background-color: #ffe600;
+  /* background-color: #fb5e02; */
 }
 .link:hover {
-  background-color: #91d6dc;
+  background-color: #ffe600;
+  color: #fb5e02;
 }
 
 button {
@@ -67,4 +70,23 @@ button {
   text-transform: uppercase;
   border-radius: solid 10px #ddd;
   background-color: #355b5e;
+}
+
+.register {
+  color: #ffe600;
+}
+.footer {
+  background-color: #333;
+  color: #fff;
+  font-size: 14px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 15vh;
+}
+
+footer {
+  margin-top: 15vh;
 }

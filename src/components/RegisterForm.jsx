@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Footer from "./Footer";
 
 function RegisterForm() {
   const {
@@ -43,7 +44,7 @@ function RegisterForm() {
 
   return (
     <>
-      <h2>Register here!</h2>
+      <h2 className="register">Register here!</h2>
       <div className="nav">
         <Link className="link" to="/">
           Home
@@ -103,6 +104,7 @@ function RegisterForm() {
 
         <button>Register</button>
       </form>
+      <Footer />
     </>
   );
 }

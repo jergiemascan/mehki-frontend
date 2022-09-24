@@ -1,5 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+
 
 const SignOut = () => {
   const navigate = useNavigate();
@@ -10,7 +11,9 @@ const SignOut = () => {
   };
   return (
     <div>
-      <button onClick={signoutHandler}>Sign out</button>
+      <button className="link" onClick={signoutHandler}>
+        Sign out
+      </button>
     </div>
   );
 };
