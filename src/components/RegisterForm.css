@@ -1,0 +1,15 @@
+.registerform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10vh;
+  margin-top: 10vh;
+}
+.error {
+  color: #ffe600;
+}
+
+.register {
+  color: #eee;
+}

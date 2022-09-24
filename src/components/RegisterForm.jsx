@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Footer from "./Footer";
+import "./RegisterForm.css";
 
 function RegisterForm() {
   const {
@@ -22,7 +23,8 @@ function RegisterForm() {
     //   confirmPassword,
     // };
 
-    const createUser = async () => {
+    const createUser = async (e) => {
+      e.preventDefault();
       try {
         const response = await axios.post(
           "http://localhost:3001/v0/register"
@@ -44,7 +46,6 @@ function RegisterForm() {
 
   return (
     <>
-      <h2 className="register">Register here!</h2>
       <div className="nav">
         <Link className="link" to="/">
           Home
@@ -55,6 +56,7 @@ function RegisterForm() {
       </div>
 
       <form className="registerform" onSubmit={handleSubmit(onSubmit)}>
+        <h2 className="register">Register here</h2>
         {/* <input
           type="text"
           placeholder="Firstname"
@@ -68,7 +70,7 @@ function RegisterForm() {
           autoComplete="off"
           type="text"
         />
-        {errors.firstName && <p>You need a first name</p>}
+        {errors.firstName && <p className="error">You need a first name</p>}
 
         <input
           {...register("lastName", { required: true })}
@@ -76,7 +78,7 @@ function RegisterForm() {
           autoComplete="off"
           type="text"
         />
-        {errors.lastName && <p>You need a last name</p>}
+        {errors.lastName && <p className="error">You need a last name</p>}
 
         <input
           {...register("email", { required: true })}
@@ -84,7 +86,7 @@ function RegisterForm() {
           autoComplete="off"
           type="text"
         />
-        {errors.email && <p>You need an email</p>}
+        {errors.email && <p className="error">You need an email</p>}
 
         <input
           {...register("password", { required: true })}
@@ -92,7 +94,7 @@ function RegisterForm() {
           autoComplete="off"
           type="password"
         />
-        {errors.password && <p>You need a password</p>}
+        {errors.password && <p className="error">You need a password</p>}
 
         <input
           {...register("confirmPassword", { required: true })}
@@ -100,7 +102,9 @@ function RegisterForm() {
           autoComplete="off"
           type="password"
         />
-        {errors.confirmPassword && <p>You need to re-enter your password</p>}
+        {errors.confirmPassword && (
+          <p className="error">You need to re-enter your password</p>
+        )}
 
         <button>Register</button>
       </form>
