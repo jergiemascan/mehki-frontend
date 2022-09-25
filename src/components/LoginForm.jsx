@@ -32,7 +32,7 @@ function LoginForm(props) {
   // loginUser();
 
   return (
-    <>
+    <div className="login-container">
       <nav className="nav">
         <Link className="link" to="/">
           Home
@@ -57,10 +57,14 @@ function LoginForm(props) {
         />
         {errors.password && <p className="error">Enter valid password</p>}
 
-        <button>Login</button>
+        <button type="submit" className="btn-auth">
+          Login
+        </button>
       </form>
-      <Footer />
-    </>
+      <div className="footer-login">
+        <Footer />
+      </div>
+    </div>
   );
 }
 

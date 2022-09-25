@@ -32,9 +32,9 @@ function ForumPage() {
         <Link className="link" to="/">
           Home
         </Link>
-        <div>
-          <button onClick={signoutHandler}>Sign out</button>
-        </div>
+        <button type="submit" className="btn-auth" onClick={signoutHandler}>
+          Sign out
+        </button>
       </div>
 
       <div className="chat-container">

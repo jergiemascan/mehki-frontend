@@ -10,7 +10,7 @@ const SignOut = () => {
   };
   return (
     <div>
-      <button className="link" onClick={signoutHandler}>
+      <button type="submit" className="btn-auth" onClick={signoutHandler}>
         Sign out
       </button>
     </div>

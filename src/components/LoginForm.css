@@ -9,3 +9,14 @@
 .error {
   color: #ffe600;
 }
+.login-container,
+.register-container {
+  display: flex;
+  flex-direction: column;
+}
+.footer-login {
+  margin-top: 18%;
+}
+.register-footer {
+  margin-top: 10%;
+}

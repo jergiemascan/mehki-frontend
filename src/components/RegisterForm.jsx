@@ -45,7 +45,7 @@ function RegisterForm() {
   };
 
   return (
-    <>
+    <div className="register-container">
       <div className="nav">
         <Link className="link" to="/">
           Home
@@ -106,10 +106,14 @@ function RegisterForm() {
           <p className="error">You need to re-enter your password</p>
         )}
 
-        <button>Register</button>
+        <button type="submit" className="btn-auth">
+          Register
+        </button>
       </form>
-      <Footer />
-    </>
+      <div className="register-footer">
+        <Footer />
+      </div>
+    </div>
   );
 }
 

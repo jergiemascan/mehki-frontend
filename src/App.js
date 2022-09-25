@@ -4,6 +4,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Landingpage from "./components/Landingpage";
 import ForumPage from "./components/ForumPage";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/signin" element={<LoginForm />} />
           <Route path="/forum" element={<ForumPage />} />
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </>
