@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-import { Link, useNavigate } from "react-router-dom";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -29,12 +28,6 @@ function Chat({ socket, username, room }) {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
-
-  const navigate = useNavigate();
-  const signoutHandler = () => {
-    localStorage.removeItem("isAuthenticated");
-    navigate("/");
-  };
 
   return (
     <>

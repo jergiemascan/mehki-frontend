@@ -21,9 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": " jest --group=-component --group=-integration --group=-browser --group=-unit",
-    "componenttest": "jest  --group=component",
-    "integrationtest": "jest  --group=integration",
-    "browsertest": "jest  --group=browser",
+    "componenttest": "jest  --group=-component",
+    "integrationtest": "jest  --group=-integration",
+    "browsertest": "jest  --group=-browser",
     "unittest": "jest  --group=unit",
     "eject": "react-scripts eject"
   },
