@@ -13,12 +13,16 @@ function LoginForm(props) {
 
   const navigate = useNavigate();
 
-  const loginUser = async (e) => {
-    e.preventDefault();
+  const loginUser = async (data) => {
+    console.log(data);
+    let userInfo = {
+      email: data.email,
+      password: data.password,
+    };
     try {
       const response = await axios.post(
-        "http://localhost:3001/v0/signin"
-        // userInfo
+        "https://mehki-backend.herokuapp.com/v0/signin",
+        userInfo
       );
       console.log(response.data);
       if (response.data.status === "success") {

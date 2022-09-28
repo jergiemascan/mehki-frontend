@@ -13,8 +13,7 @@ function RegisterForm() {
   // const [errorTitle, setError] = useState(""); used for validation when routes are set up
   const navigate = useNavigate();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     // const userInfo = {
     //   firstName,
     //   lastName,
@@ -22,13 +21,21 @@ function RegisterForm() {
     //   password,
     //   confirmPassword,
     // };
+    console.log(data);
+    let userInfo = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+    };
 
     const createUser = async (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       try {
         const response = await axios.post(
-          "http://localhost:3001/v0/register"
-          // userInfo
+          "https://mehki-backend.herokuapp.com/v0/register",
+          userInfo
         );
         console.log(response.data);
         if (response.data.status === "success") {
