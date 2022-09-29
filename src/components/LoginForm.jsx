@@ -4,7 +4,7 @@ import axios from "axios";
 import Footer from "./Footer";
 import "./LoginForm.css";
 
-function LoginForm(props) {
+function LoginForm() {
   const {
     register,
     handleSubmit,
@@ -14,15 +14,12 @@ function LoginForm(props) {
   const navigate = useNavigate();
 
   const loginUser = async (data) => {
-    console.log(data);
-    let userInfo = {
-      email: data.email,
-      password: data.password,
-    };
+    let userCredentials = data;
     try {
       const response = await axios.post(
+        // "http://localhost:3001/v0/signin",
         "https://mehki-backend.herokuapp.com/v0/signin",
-        userInfo
+        userCredentials
       );
       console.log(response.data);
       if (response.data.status === "success") {
@@ -33,7 +30,6 @@ function LoginForm(props) {
       console.log(error);
     }
   };
-  // loginUser();
 
   return (
     <div className="login-container">
@@ -47,7 +43,14 @@ function LoginForm(props) {
       </nav>
       <form className="login-form" onSubmit={handleSubmit(loginUser)}>
         <input
-          {...register("email", { required: true })}
+          {...register("email", {
+            required: true,
+            pattern: {
+              value:
+                /^(([^<>()\]\\.,;:\s@"]+(.^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              message: "Enter a valid email.",
+            },
+          })}
           type="text"
           placeholder="Email"
         />

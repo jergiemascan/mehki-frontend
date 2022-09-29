@@ -8,47 +8,31 @@ function RegisterForm() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-  // const [errorTitle, setError] = useState(""); used for validation when routes are set up
+  const watchPassword = watch("password");
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    // const userInfo = {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password,
-    //   confirmPassword,
-    // };
-    console.log(data);
-    let userInfo = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      password: data.password,
-      confirmPassword: data.confirmPassword,
-    };
+  const createUser = async (data) => {
+    let userCredentials = data;
 
-    const createUser = async (e) => {
-      // e.preventDefault();
-      try {
-        const response = await axios.post(
-          "https://mehki-backend.herokuapp.com/v0/register",
-          userInfo
-        );
-        console.log(response.data);
-        if (response.data.status === "success") {
-          localStorage.setItem("isAuthenticated", response.data.data.user);
-          setTimeout(() => {
-            navigate("/forum");
-          }, 2000);
-        }
-      } catch (error) {
-        console.log(error);
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/v0/register",
+        "https://mehki-backend.herokuapp.com/v0/register",
+        userCredentials
+      );
+      console.log(response.data);
+      if (response.data.status === "success") {
+        localStorage.setItem("isAuthenticated", response.data.data.user);
+        setTimeout(() => {
+          navigate("/forum");
+        }, 2000);
       }
-    };
-    createUser();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -62,15 +46,8 @@ function RegisterForm() {
         </Link>
       </div>
 
-      <form className="registerform" onSubmit={handleSubmit(onSubmit)}>
+      <form className="registerform" onSubmit={handleSubmit(createUser)}>
         <h2 className="register">Register here</h2>
-        {/* <input
-          type="text"
-          placeholder="Firstname"
-          onChange={(e) => setFirstname(e.target.value)}
-          value={firstName}
-        /> */}
-
         <input
           {...register("firstName", { required: true })}
           placeholder="First name"
@@ -88,29 +65,40 @@ function RegisterForm() {
         {errors.lastName && <p className="error">You need a last name</p>}
 
         <input
-          {...register("email", { required: true })}
+          {...register("email", {
+            required: true,
+            pattern: {
+              value:
+                /^(([^<>()\]\\.,;:\s@"]+(.^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            },
+          })}
           placeholder="Email"
           autoComplete="off"
           type="text"
         />
-        {errors.email && <p className="error">You need an email</p>}
+        {errors.email && <p className="error">Enter a valid email</p>}
 
         <input
-          {...register("password", { required: true })}
+          {...register("password", { required: true, minLength: 5 })}
           placeholder="Password"
           autoComplete="off"
           type="password"
         />
-        {errors.password && <p className="error">You need a password</p>}
+        {errors.password && <p className="error">Minimum length of 5</p>}
 
         <input
-          {...register("confirmPassword", { required: true })}
+          {...register("confirmPassword", {
+            required: true,
+            minLength: 5,
+            validate: (confirmPassword) =>
+              confirmPassword === watchPassword || "Passwords need to match",
+          })}
           placeholder="Confirm Password"
           autoComplete="off"
           type="password"
         />
         {errors.confirmPassword && (
-          <p className="error">You need to re-enter your password</p>
+          <p className="error">Passwords need to match</p>
         )}
 
         <button type="submit" className="btn-auth">

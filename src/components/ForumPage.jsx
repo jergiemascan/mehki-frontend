@@ -5,7 +5,7 @@ import { useState } from "react";
 import io from "socket.io-client";
 import Footer from "./Footer";
 
-const socket = io.connect("http://localhost:3004");
+const socket = io.connect("https://mehki-backend.herokuapp.com");
 
 function ForumPage() {
   const [username, setUserName] = useState("");
