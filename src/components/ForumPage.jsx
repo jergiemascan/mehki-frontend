@@ -15,10 +15,10 @@ function ForumPage() {
   const [room, setRoom] = useState("");
   const [showChat, setshowChat] = useState(false);
 
-  const onUsernameSelection = (username) => {
-    socket.auth = { username };
-    socket.connect();
-  };
+  // const onUsernameSelection = (username) => {
+  //   socket.auth = { username };
+  //   socket.connect();
+  // };
   const joinRoom = () => {
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
