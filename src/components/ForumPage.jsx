@@ -8,7 +8,7 @@ import Footer from "./Footer";
 // const URL = "https://mehki-backend.herokuapp.com/";
 // const socket = io(URL, { autoConnect: false });
 
-const socket = io.connect();
+const socket = io.connect(window.location.origin);
 
 function ForumPage() {
   const [username, setUserName] = useState("");
