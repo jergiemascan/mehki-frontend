@@ -5,20 +5,13 @@ import { useState } from "react";
 import io from "socket.io-client";
 import Footer from "./Footer";
 
-// const URL = "https://mehki-backend.herokuapp.com/";
-// const socket = io(URL, { autoConnect: false });
-
-const socket = io.connect(window.location.origin);
+const socket = io("http://localhost:3004");
 
 function ForumPage() {
   const [username, setUserName] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setshowChat] = useState(false);
 
-  // const onUsernameSelection = (username) => {
-  //   socket.auth = { username };
-  //   socket.connect();
-  // };
   const joinRoom = () => {
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
@@ -52,7 +45,6 @@ function ForumPage() {
               <input
                 type="text"
                 placeholder="John..."
-                // onChange={onUsernameSelection}
                 onChange={(event) => {
                   setUserName(event.target.value);
                 }}
