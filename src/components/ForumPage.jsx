@@ -5,7 +5,7 @@ import { useState } from "react";
 import io from "socket.io-client";
 import Footer from "./Footer";
 
-const socket = io("http://localhost:3004");
+const socket = io.connect("https://thawing-beyond-87063.herokuapp.com/");
 
 function ForumPage() {
   const [username, setUserName] = useState("");
