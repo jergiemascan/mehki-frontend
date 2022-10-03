@@ -17,7 +17,6 @@ function LoginForm() {
     let userCredentials = data;
     try {
       const response = await axios.post(
-        // "http://localhost:3001/v0/signin",
         "https://mehki-backend.herokuapp.com/v0/signin",
         userCredentials
       );

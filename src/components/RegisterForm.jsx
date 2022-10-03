@@ -19,7 +19,6 @@ function RegisterForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/v0/register",
         "https://mehki-backend.herokuapp.com/v0/register",
         userCredentials
       );
